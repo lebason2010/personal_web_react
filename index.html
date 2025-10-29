@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Cá Nhân</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: -1;
+        }
+
+        .blob {
+            position: fixed;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .blob1 {
+            width: 300px;
+            height: 300px;
+            background: #fff;
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            top: -50px;
+            right: -50px;
+            animation: blob 7s infinite;
+        }
+
+        .blob2 {
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            bottom: -50px;
+            left: -50px;
+            animation: blob 8s infinite reverse;
+        }
+
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 60px 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 5px solid #667eea;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .contact-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+
+        .contact-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .contact-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #764ba2;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .title {
+                font-size: 16px;
+            }
+
+            .bio {
+                font-size: 14px;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+    </div>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function PersonalWebsite() {
+            return (
+                <div className="container">
+                    <div className="card">
+                        <img 
+                            src="bs1.jpg" 
+                            alt="Hình chân dung" 
+                            className="profile-image"
+                        />
+                        
+                        <h1 className="name">Lê Bá Sơn</h1>
+                        <p className="title">Kỹ sư thiết kế vi mạch</p>
+                        
+                        <p className="bio">
+                            Tôi là một kỹ sư với hơn 20 năm trong phát triển vi mạch bán dẫn. 
+                            Sử dụng công nghệ hiện đại. 
+                            Luôn tìm tìm cơ hội để học hỏi và tạo ra những sản phẩm chất lượng cao.
+                        </p>
+
+                        <div className="contact-section">
+                            <p className="contact-title">Thông Tin Liên Hệ</p>
+                            
+                            <div className="contact-info">
+                                <div className="contact-item">
+                                    📧 Email: <a href="mailto:lebason.2004@gmail.com">lebason.2004@gmail.com</a>
+                                </div>
+                                <div className="contact-item">
+                                    📱 Điện thoại: <a href="tel:+84706163142">+84 0706163142</a>
+                                </div>
+                                <div className="contact-item">
+                                    📍 Địa chỉ: Thành Phố Hồ Chí Minh, Việt Nam
+                                </div>
+                            </div>
+
+                            <div className="social-links">
+                                <a href="https://www.linkedin.com/in/l%C3%AA-b%C3%A1-s%C6%A1n-919b87359/" target="_blank" rel="noopener noreferrer" className="social-btn" title="LinkedIn">
+                                    in
+                                </a>
+                                <a href="https://github.com/lebason2010" target="_blank" rel="noopener noreferrer" className="social-btn" title="GitHub">
+                                    ⚙️
+                                </a>
+                                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-btn" title="Twitter">
+                                    𝕏
+                                </a>
+                                <a href="https://www.facebook.com/lbson204/" target="_blank" rel="noopener noreferrer" className="social-btn" title="Facebook">
+                                    f
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<PersonalWebsite />, document.getElementById('root'));
+    </script>
+</body>
+</html>
