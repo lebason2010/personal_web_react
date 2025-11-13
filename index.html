@@ -199,6 +199,16 @@
                 height: 120px;
             }
         }
+        .weather-widget {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            width: 250px;
+            height: auto;
+        }
+
+
     </style>
 </head>
 <body>
@@ -210,8 +220,30 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        function PersonalWebsite() {
-            return (
+    function PersonalWebsite() {
+        React.useEffect(() => {
+            const script = document.createElement("script");
+            script.src = "https://weatherwidget.io/js/widget.min.js";
+            script.id = "weatherwidget-io-js";
+            document.body.appendChild(script);
+        }, []);
+
+        return (
+            <>
+    
+                <div className="weather-widget">
+                    <a
+                        className="weatherwidget-io"
+                        href="https://forecast7.com/en/10d82106d63/ho-chi-minh-city/"
+                        data-label_1="HO CHI MINH CITY"
+                        data-label_2="WEATHER"
+                        data-theme="original"
+                    >
+                        HO CHI MINH CITY WEATHER
+                    </a>
+                </div>
+
+             
                 <div className="container">
                     <div className="card">
                         <img 
@@ -226,7 +258,7 @@
                         <p className="bio">
                             Tôi là một kỹ sư với hơn 20 năm trong phát triển vi mạch bán dẫn. 
                             Sử dụng công nghệ hiện đại. 
-                            Luôn tìm tìm cơ hội để học hỏi và tạo ra những sản phẩm chất lượng cao.
+                            Luôn tìm kiếm cơ hội để học hỏi và tạo ra những sản phẩm chất lượng cao.
                         </p>
 
                         <div className="contact-section">
@@ -261,10 +293,14 @@
                         </div>
                     </div>
                 </div>
-            );
-        }
+            </>
+        );
+    }
 
-        ReactDOM.render(<PersonalWebsite />, document.getElementById('root'));
-    </script>
+    ReactDOM.render(<PersonalWebsite />, document.getElementById('root'));
+</script>
+
+
 </body>
 </html>
+
